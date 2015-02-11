@@ -32,12 +32,34 @@
             </Component>
           </Directory>
         </Directory>
+        <Directory Id="MicroFrameworkDir" Name="Microsoft .NET Micro Framework">
+          <Directory Id="VerDir" Name="v4.3">
+            <Directory Id="AssemDir" Name="Assemblies">
+              <Component Id="MODULESCOMMON" DiskId="1" Guid="b25323cc-b29c-4e75-bbae-08dd787f8451">
+                <File Id="EGIoTKitEmulatorModules" Name="EGIoTKitEmulator.Modules.dll" Source="$(var.EGIoTKitEmulator.Modules.TargetDir)EGIoTKitEmulator.Modules.dll" Vital="yes" KeyPath="no"  />
+              </Component>
+              <Directory Id="leDir" Name="le">
+                <Component Id="MODULESLE" DiskId="1" Guid="9448f2fb-f088-4503-9fc0-16d0f37b2942">
+                  <File Id="EGIoTKitEmulatorModulesLe" Name="EGIoTKitEmulator.Modules.dll" Source="$(var.EGIoTKitEmulator.Modules.TargetDir)le\EGIoTKitEmulator.Modules.dll" Vital="yes" KeyPath="no"  />
+                </Component>
+              </Directory>
+              <Directory Id="beDir" Name="be">
+                <Component Id="MODULESBE" DiskId="1" Guid="16ad3e52-44ad-484b-b5b7-a21e0bb59e82">
+                  <File Id="EGIoTKitEmulatorModulesBe" Name="EGIoTKitEmulator.Modules.dll" Source="$(var.EGIoTKitEmulator.Modules.TargetDir)be\EGIoTKitEmulator.Modules.dll" Vital="yes" KeyPath="no"  />
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
       </Directory>
     </Directory>
 
     <Feature Id="ProductFeature" Title="EGIoTKit Emulator" Level="1">
       <ComponentRef	Id="EMULATORBIN"	/>
       <ComponentRef Id="EMULATORPICS" />
+      <ComponentRef Id="MODULESCOMMON" />
+      <ComponentRef Id="MODULESLE" />
+      <ComponentRef Id="MODULESBE" />
     </Feature>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
   </Product>
